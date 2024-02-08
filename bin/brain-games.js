@@ -1,3 +1,8 @@
 #!/usr/bin/env node
 
-console.log(`Welcome to the Brain Games!`);
+// import path from 'path';
+// import { welcome } from path.join(__dirname, '..', 'src', 'cli.js');
+
+import { welcome } from '../src/cli.js';
+
+welcome();
