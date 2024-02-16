@@ -1,15 +1,11 @@
 import readlineSync from 'readline-sync';
 
-import * as evenGame from '../games/game-even.js';
-import * as calcGame from '../games/game-calc.js';
-
 const DEFAULT_ADDRESS = 'friend';
 const PLAY_ROUNDS = 3;
 
 const welcome = () => {
   console.log('Welcome to the Brain Games!');
-  const given = readlineSync.question('May I have your name? ').trim();
-  const name = given || DEFAULT_ADDRESS;
+  const name = readlineSync.question('May I have your name? ') || DEFAULT_ADDRESS;
   console.log(`Hello, ${name}!`);
   return name;
 };
@@ -22,21 +18,8 @@ const congrats = (won, name) => {
   }
 };
 
-const playGame = (gameName) => {
+const playGame = (game) => {
   const playerName = welcome();
-
-  let game = {};
-  switch (gameName) {
-    case 'even':
-      game = evenGame;
-      break;
-    case 'calc':
-      game = calcGame;
-      break;
-    default:
-      console.log(`Game not found. Sorry, ${playerName}!`);
-      return;
-  }
 
   const rules = game.rules();
   console.log(rules);
