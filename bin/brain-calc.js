@@ -4,6 +4,6 @@
 // const __dirname = process.cwd();
 // import welcome from path.join(__dirname, '..', 'src', 'cli.js');
 
-import playGame from '../src/play-game.js';
+import playGame from '../src/index.js';
 
 playGame('calc');

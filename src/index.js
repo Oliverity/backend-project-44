@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 
-import * as evenGame from './game-even.js';
-import * as calcGame from './game-calc.js';
+import * as evenGame from '../games/game-even.js';
+import * as calcGame from '../games/game-calc.js';
 
 const DEFAULT_ADDRESS = 'friend';
 const PLAY_ROUNDS = 3;
