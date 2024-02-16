@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 
-// import * as calcGame from './game-calc.js';
 import * as evenGame from './game-even.js';
+import * as calcGame from './game-calc.js';
 
 const DEFAULT_ADDRESS = 'friend';
 const PLAY_ROUNDS = 3;
@@ -30,7 +30,12 @@ const playGame = (gameName) => {
     case 'even':
       game = evenGame;
       break;
+    case 'calc':
+      game = calcGame;
+      break;
     default:
+      console.log(`Game not found. Sorry, ${playerName}!`);
+      return;
   }
 
   const rules = game.rules();
