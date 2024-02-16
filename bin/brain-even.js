@@ -4,10 +4,6 @@
 // const __dirname = process.cwd();
 // import welcome from path.join(__dirname, '..', 'src', 'cli.js');
 
-import { welcome, congrats } from '../src/service.js';
-import playEven from '../src/game-even.js';
+import playGame from '../src/play-game.js';
 
-const player = welcome();
-const won = playEven();
-
-congrats(won, player);
+playGame('even');
