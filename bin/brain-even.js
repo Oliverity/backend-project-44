@@ -5,6 +5,6 @@
 // import welcome from path.join(__dirname, '..', 'src', 'cli.js');
 
 import playGame from '../src/index.js';
-import * as game from '../games/game-even.js';
+import * as game from '../src/games/game-even.js';
 
 playGame(game);
