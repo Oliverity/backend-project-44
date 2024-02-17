@@ -23,3 +23,5 @@ export const congrats = (won, name) => {
     console.log(`Let's try again, ${name}!`);
   }
 };
+
+export const takeAChance = (probability) => (Math.random() <= probability);
