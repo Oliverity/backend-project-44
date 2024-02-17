@@ -1,12 +1,15 @@
-const YES = 'yes';
-const NO = 'no';
-const MAX_PLUS_ONE = 100;
+import { randomIntInRange } from '../service.js';
 
-export const rules = () => `Answer "${YES}" if the number is even, otherwise answer "${NO}".`;
+const EVEN = 'yes';
+const ODD = 'no';
+const MIN_VALUE = 10;
+const MAX_VALUE = 99;
+
+export const rules = () => `Answer "${EVEN}" if the number is even, otherwise answer "${ODD}".`;
 
 export const planRound = () => {
-  const number = Math.floor(Math.random() * MAX_PLUS_ONE); // 0..99
+  const number = randomIntInRange(MIN_VALUE, MAX_VALUE);
   const even = !(number % 2);
-  const rightAnswer = even ? YES : NO;
+  const rightAnswer = even ? EVEN : ODD;
   return [number, rightAnswer];
 };

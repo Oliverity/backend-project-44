@@ -1,22 +1,7 @@
 import readlineSync from 'readline-sync';
+import { welcome, congrats } from './service.js';
 
-const DEFAULT_ADDRESS = 'friend';
 const PLAY_ROUNDS = 3;
-
-const welcome = () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ') || DEFAULT_ADDRESS;
-  console.log(`Hello, ${name}!`);
-  return name;
-};
-
-const congrats = (won, name) => {
-  if (won) {
-    console.log(`Congratulations, ${name}!`);
-  } else {
-    console.log(`Let's try again, ${name}!`);
-  }
-};
 
 const playGame = (game) => {
   const playerName = welcome();
