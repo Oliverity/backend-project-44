@@ -55,6 +55,20 @@ export const isPrime = (n) => {
   return true;
 };
 
+const populateExcluded = (coll, num, limit, limitSQRT) => {
+  if (num > limitSQRT) {
+    return;
+  }
+
+  let multiplied = num;
+  while (multiplied <= limit) {
+    if (!coll.includes(multiplied)) {
+      coll.push(multiplied);
+    }
+    multiplied += num;
+  }
+};
+
 export const collectPrimes = (topNumber) => {
   if (topNumber < 2) {
     return [];
@@ -64,26 +78,12 @@ export const collectPrimes = (topNumber) => {
   const excluded = [];
   const sqrt = Math.floor(Math.sqrt(topNumber));
 
-  const populateExcluded = (num) => {
-    if (num > sqrt) {
-      return;
-    }
-
-    let multiplied = num;
-    while (multiplied <= topNumber) {
-      if (!excluded.includes(multiplied)) {
-        excluded.push(multiplied);
-      }
-      multiplied += num;
-    }
-  };
-
   for (let i = 3; i <= topNumber; i += 2) {
     if (!excluded.includes(i)) {
       if (isPrime(i)) {
         result.push(i);
       }
-      populateExcluded(i);
+      populateExcluded(excluded, i, topNumber, sqrt);
     }
   }
 
