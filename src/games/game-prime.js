@@ -12,7 +12,7 @@ const primes = collectPrimes(MAX_VALUE);
 // console.log(`primes = ${JSON.stringify(primes)}`);
 
 export const rules = () => (
-  `Answer "${PRIME}" if given number is prime, otherwise answer "${COMPOSITE}".`
+  `Answer "${PRIME}" if given number is prime. Otherwise answer "${COMPOSITE}".`
 );
 
 export const planRound = () => {
