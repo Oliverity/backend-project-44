@@ -23,7 +23,7 @@ export const congrats = (won, name) => {
 
 export const takeAChance = (probability) => (Math.random() <= probability);
 
-export const getRandomItem = (coll) => coll[randomIntInRange(coll.length - 1)];
+export const getRandomItem = (coll) => coll[randomIntMaxMin(coll.length - 1)];
 
 export const getGCD = (a, b, knownDivisor = 2) => {
   const minOfAB = Math.floor(Math.min(a, b));
