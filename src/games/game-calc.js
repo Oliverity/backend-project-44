@@ -20,21 +20,21 @@ export const planRound = () => {
     case '*':
       a = randomIntInRange(MAX_FOR_MULTIPLY);
       b = randomIntInRange(MAX_FOR_MULTIPLY);
-      rightAnswer = a * b;
+      rightAnswer = String(a * b);
       break;
     case '+':
       a = randomIntInRange(MIN_FOR_ADD_SUBSTRACT, MAX_FOR_ADD_SUBSTRACT);
       b = randomIntInRange(MIN_FOR_ADD_SUBSTRACT, MAX_FOR_ADD_SUBSTRACT);
-      rightAnswer = a + b;
+      rightAnswer = String(a + b);
       break;
     case '-':
       a = randomIntInRange(MIN_FOR_ADD_SUBSTRACT, MAX_FOR_ADD_SUBSTRACT);
       b = randomIntInRange(MIN_FOR_ADD_SUBSTRACT, a);
-      rightAnswer = a - b;
+      rightAnswer = String(a - b);
       break;
     default:
   }
   const question = `${a} ${op} ${b}`;
 
-  return [question, String(rightAnswer)];
+  return [question, rightAnswer];
 };

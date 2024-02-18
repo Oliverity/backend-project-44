@@ -42,8 +42,9 @@ export const planRound = () => {
     b = randomIntInRange(MIN_VALUE, MAX_VALUE);
   }
 
-  const gcd = getGCD(a, b, niceDivisor);
   const question = `${a} ${b}`;
+  const gcd = getGCD(a, b, niceDivisor);
+  const rightAnswer = String(gcd);
 
-  return [question, String(gcd)];
+  return [question, rightAnswer];
 };
