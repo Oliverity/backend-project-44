@@ -5,12 +5,12 @@ const MAX_ROW_LENGTH = 10;
 const MIN_START = 0;
 const MAX_FINISH = 99;
 const MIN_STEP = 2;
-const MAX_ROW_LENGTH_CHANCE = 0.6;
+const FORCE_LONG_ROW_CHANCE = 0.6;
 
 export const rules = () => 'What number is missing in the progression?';
 
 export const planRound = () => {
-  const rowLength = takeAChance(MAX_ROW_LENGTH_CHANCE)
+  const rowLength = takeAChance(FORCE_LONG_ROW_CHANCE)
     ? MAX_ROW_LENGTH
     : randomIntInRange(MIN_ROW_LENGTH, MAX_ROW_LENGTH);
 
