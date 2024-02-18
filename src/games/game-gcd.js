@@ -5,6 +5,29 @@ const MAX_VALUE = 100;
 const NICE_GCD_CANDIDATE_TOPS = 25;
 const FORCE_NICE_GCD_CHANCE = 0.75;
 
+const generatePairForNiceGCD = () => {
+  const candidateGCD = randomIntInRange(2, NICE_GCD_CANDIDATE_TOPS);
+  const maxMultiplicator = Math.floor(MAX_VALUE / candidateGCD);
+
+  const a = candidateGCD * randomIntInRange(MIN_VALUE, maxMultiplicator);
+  const b = candidateGCD * randomIntInRange(MIN_VALUE, maxMultiplicator);
+
+  return [a, b, candidateGCD];
+};
+
+const getGCD = (a, b, knownDivisor = 2) => {
+  const minOfAB = Math.floor(Math.min(a, b));
+
+  for (let i = minOfAB; i >= knownDivisor; i -= 1) {
+    if (!((a % i) || (b % i))) {
+      return i;
+    }
+  }
+
+  return 1;
+};
+// ------------------------------------------------------------------
+
 export const rules = () => 'Find the greatest common divisor of given numbers.';
 
 export const planRound = () => {
@@ -23,27 +46,4 @@ export const planRound = () => {
   const question = `${a} ${b}`;
 
   return [question, String(gcd)];
-};
-
-// ------------------------------------------------------------------
-const getGCD = (a, b, knownDivisor = 2) => {
-  const minOfAB = Math.floor(Math.min(a, b));
-
-  for (let i = minOfAB; i >= knownDivisor; i -= 1) {
-    if (!((a % i) || (b % i))) {
-      return i;
-    }
-  }
-
-  return 1;
-};
-
-const generatePairForNiceGCD = () => {
-  const candidateGCD = randomIntInRange(2, NICE_GCD_CANDIDATE_TOPS);
-  const maxMultiplicator = Math.floor(MAX_VALUE / candidateGCD);
-
-  const a = candidateGCD * randomIntInRange(MIN_VALUE, maxMultiplicator);
-  const b = candidateGCD * randomIntInRange(MIN_VALUE, maxMultiplicator);
-
-  return [a, b, candidateGCD];
 };
