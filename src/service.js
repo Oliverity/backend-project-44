@@ -25,3 +25,67 @@ export const congrats = (won, name) => {
 };
 
 export const takeAChance = (probability) => (Math.random() <= probability);
+
+export const getRandomItem = (coll) => coll[randomIntInRange(coll.length - 1)];
+
+export const getGCD = (a, b, knownDivisor = 2) => {
+  const minOfAB = Math.floor(Math.min(a, b));
+
+  for (let i = minOfAB; i >= knownDivisor; i -= 1) {
+    if (!((a % i) || (b % i))) {
+      return i;
+    }
+  }
+
+  return 1;
+};
+
+export const isPrime = (n) => {
+  if (n < 2) {
+    return false;
+  }
+
+  const sqrt = Math.floor(Math.sqrt(n));
+  for (let i = 2; i <= sqrt; i += 1) {
+    if (!(n % i)) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
+export const collectPrimes = (topNumber) => {
+  if (topNumber < 2) {
+    return [];
+  }
+
+  const result = [2];
+  const excluded = [];
+  const sqrt = Math.floor(Math.sqrt(topNumber));
+
+  const populateExcluded = (num) => {
+    if (num > sqrt) {
+      return;
+    }
+
+    let multiplied = num;
+    while (multiplied <= topNumber) {
+      if (!excluded.includes(multiplied)) {
+        excluded.push(multiplied);
+      }
+      multiplied += num;
+    }
+  };
+
+  for (let i = 3; i <= topNumber; i += 2) {
+    if (!excluded.includes(i)) {
+      if (isPrime(i)) {
+        result.push(i);
+      }
+      populateExcluded(i);
+    }
+  }
+
+  return result;
+};
