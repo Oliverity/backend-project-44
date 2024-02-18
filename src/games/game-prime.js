@@ -15,14 +15,14 @@ const isPrime = (n) => {
   }
 
   const sqrt = Math.floor(Math.sqrt(n));
-  for (let i = 2; i <= sqrt; i += 1 ) {
+  for (let i = 2; i <= sqrt; i += 1) {
     if (!(n % i)) {
       return false;
     }
   }
 
   return true;
-}; 
+};
 // ------------------------------------------------------------------
 
 export const rules = () => (
