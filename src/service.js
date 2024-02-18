@@ -3,7 +3,7 @@ import readlineSync from 'readline-sync';
 const DEFAULT_ADDRESS = 'friend';
 
 export const randomIntMaxMin = (maxValue, minValue = 0) => (
-  minValue + Math.floor(Math.random() * (maxValue - minValue + 1);
+  minValue + Math.floor(Math.random() * (maxValue - minValue + 1));
 );
 
 export const welcome = () => {
