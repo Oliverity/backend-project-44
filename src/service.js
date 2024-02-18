@@ -2,12 +2,9 @@ import readlineSync from 'readline-sync';
 
 const DEFAULT_ADDRESS = 'friend';
 
-export const randomIntInRange = (...vals) => {
-  const minValue = (vals.length > 1 ? vals[0] : 0) || 0;
-  const maxValue = (vals.length > 1 ? vals[1] : vals[0]) || 0;
-  const rnd = minValue + Math.floor(Math.random() * (maxValue - minValue + 1));
-  return rnd;
-};
+export const randomIntMaxMin = (maxValue, minValue = 0) => (
+  minValue + Math.floor(Math.random() * (maxValue - minValue + 1);
+);
 
 export const welcome = () => {
   console.log('Welcome to the Brain Games!');

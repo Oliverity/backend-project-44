@@ -1,4 +1,4 @@
-import { randomIntInRange, takeAChance, getGCD } from '../service.js';
+import { randomIntMaxMin, takeAChance, getGCD } from '../service.js';
 
 const MIN_VALUE = 1;
 const MAX_VALUE = 100;
@@ -6,11 +6,11 @@ const NICE_GCD_CANDIDATE_TOPS = 25;
 const FORCE_NICE_GCD_CHANCE = 0.75;
 
 const generatePairForNiceGCD = () => {
-  const candidateGCD = randomIntInRange(2, NICE_GCD_CANDIDATE_TOPS);
+  const candidateGCD = randomIntMaxMin(NICE_GCD_CANDIDATE_TOPS, 2);
   const maxMultiplicator = Math.floor(MAX_VALUE / candidateGCD);
 
-  const a = candidateGCD * randomIntInRange(MIN_VALUE, maxMultiplicator);
-  const b = candidateGCD * randomIntInRange(MIN_VALUE, maxMultiplicator);
+  const a = candidateGCD * randomIntMaxMin(maxMultiplicator, MIN_VALUE);
+  const b = candidateGCD * randomIntMaxMin(maxMultiplicator, MIN_VALUE);
 
   return [a, b, candidateGCD];
 };
@@ -26,8 +26,8 @@ export const planRound = () => {
   if (takeAChance(FORCE_NICE_GCD_CHANCE)) {
     [a, b, niceDivisor] = generatePairForNiceGCD();
   } else {
-    a = randomIntInRange(MIN_VALUE, MAX_VALUE);
-    b = randomIntInRange(MIN_VALUE, MAX_VALUE);
+    a = randomIntMaxMin(MAX_VALUE, MIN_VALUE);
+    b = randomIntMaxMin(MAX_VALUE, MIN_VALUE);
   }
 
   const question = `${a} ${b}`;
