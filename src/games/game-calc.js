@@ -1,4 +1,4 @@
-import { randomIntMaxMin } from '../service.js';
+import { randomIntInRange } from '../service.js';
 
 const MIN_FOR_ADD_SUBSTRACT = 10;
 const MAX_FOR_ADD_SUBSTRACT = 99;
@@ -9,7 +9,7 @@ const operators = ['+', '-', '*'];
 export const rules = () => 'What is the result of the expression?';
 
 export const planRound = () => {
-  const opIdx = randomIntMaxMin(operators.length - 1);
+  const opIdx = randomIntInRange(operators.length - 1);
   const op = operators[opIdx];
 
   let a;
@@ -18,18 +18,18 @@ export const planRound = () => {
 
   switch (op) {
     case '*':
-      a = randomIntMaxMin(MAX_FOR_MULTIPLY);
-      b = randomIntMaxMin(MAX_FOR_MULTIPLY);
+      a = randomIntInRange(MAX_FOR_MULTIPLY);
+      b = randomIntInRange(MAX_FOR_MULTIPLY);
       rightAnswer = String(a * b);
       break;
     case '+':
-      a = randomIntMaxMin(MAX_FOR_ADD_SUBSTRACT, MIN_FOR_ADD_SUBSTRACT);
-      b = randomIntMaxMin(MAX_FOR_ADD_SUBSTRACT, MIN_FOR_ADD_SUBSTRACT);
+      a = randomIntInRange(MIN_FOR_ADD_SUBSTRACT, MAX_FOR_ADD_SUBSTRACT);
+      b = randomIntInRange(MIN_FOR_ADD_SUBSTRACT, MAX_FOR_ADD_SUBSTRACT);
       rightAnswer = String(a + b);
       break;
     case '-':
-      a = randomIntMaxMin(MAX_FOR_ADD_SUBSTRACT, MIN_FOR_ADD_SUBSTRACT);
-      b = randomIntMaxMin(a, MIN_FOR_ADD_SUBSTRACT);
+      a = randomIntInRange(MIN_FOR_ADD_SUBSTRACT, MAX_FOR_ADD_SUBSTRACT);
+      b = randomIntInRange(MIN_FOR_ADD_SUBSTRACT, a);
       rightAnswer = String(a - b);
       break;
     default:

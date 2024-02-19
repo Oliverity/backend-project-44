@@ -1,10 +1,16 @@
 import readlineSync from 'readline-sync';
 
 const DEFAULT_ADDRESS = 'friend';
+const DEFAULT_MIN_INT = 0;
 
-export const randomIntMaxMin = (maxValue, minValue = 0) => (
-  minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
-);
+export const randomIntInRange = (first, second) => {
+  const [minValue, maxValue] = (second !== undefined)
+    ? [Math.min(first, second), Math.max(first, second)]
+    : [Math.min(DEFAULT_MIN_INT, first), Math.max(DEFAULT_MIN_INT, first)];
+
+  const rnd = minValue + Math.floor(Math.random() * (maxValue - minValue + 1));
+  return rnd;
+};
 
 export const welcome = () => {
   console.log('Welcome to the Brain Games!');
@@ -23,7 +29,7 @@ export const congrats = (won, name) => {
 
 export const takeAChance = (probability) => (Math.random() <= probability);
 
-export const getRandomItem = (coll) => coll[randomIntMaxMin(coll.length - 1)];
+export const getRandomItem = (coll) => coll[randomIntInRange(coll.length - 1)];
 
 export const getGCD = (a, b, knownDivisor = 2) => {
   const minOfAB = Math.floor(Math.min(a, b));

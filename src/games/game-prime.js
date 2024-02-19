@@ -1,5 +1,5 @@
 import {
-  randomIntMaxMin, takeAChance, isPrime, getRandomItem, collectPrimes,
+  randomIntInRange, takeAChance, isPrime, getRandomItem, collectPrimes,
 } from '../service.js';
 
 const FORCE_PRIME_CHANCE = 0.35;
@@ -20,7 +20,7 @@ export const planRound = () => {
     return [getRandomItem(primes), PRIME];
   }
 
-  const question = randomIntMaxMin(MAX_VALUE, MIN_VALUE);
+  const question = randomIntInRange(MIN_VALUE, MAX_VALUE);
   const rightAnswer = isPrime(question) ? PRIME : COMPOSITE;
 
   return [question, rightAnswer];
